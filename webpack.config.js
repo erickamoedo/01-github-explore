@@ -17,10 +17,16 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
 
+   // aqui eu passo o path da minha aplicacao e ele atualiza o bundle sem eu precisar ficar dando yarn webpack no terminal
+  devServer: {    
+    static: {
+      directory: path.resolve(__dirname, 'public') // basta executar yarn webpack serve
+  },
+    
+  }, 
+
   plugins: [
-
     new htmlWebpackPlugin( {
-
       template: path.resolve(__dirname, 'public', 'index.html') //faz com quem gere um HMTL dentro da pasta dist
     })
 

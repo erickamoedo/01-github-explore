@@ -2,23 +2,21 @@
 const path = require("path");
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
+const isDevelopment = process.env.NODE_ENV != 'production';
+
 module.exports = {
-  // modulo que carrega a primeira tela, ele chama o patch, o diretorio e o arquivo para executar
-  entry: path.resolve(__dirname, "src", "index.jsx"),
-
-  mode: 'development', // ai ele otimiza qnd eu usar  o yarn weback no ambiente de dev (diminuiu 6 segundos)
-
-  // Aqui é o caminho da saida
-  output: {
+  
+  entry: path.resolve(__dirname, "src", "index.jsx"), // modulo que carrega a primeira tela, ele chama o patch, o diretorio e o arquivo para executar
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map' , // faz roadmap de erros mostrar a linha exata no chrome
+  mode: isDevelopment ? 'development' : 'production', // verifica qual ambiente esta e  ai ele otimiza qnd eu usar  o yarn weback no ambiente de dev (diminuiu 6 segundos)
+  output: { // Aqui é o caminho da saida
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
   resolve: {
     extensions: [".js", ".jsx"]
   },
-
-   // aqui eu passo o path da minha aplicacao e ele atualiza o bundle sem eu precisar ficar dando yarn webpack no terminal
-  devServer: {    
+     devServer: {    // aqui eu passo o path da minha aplicacao e ele atualiza o bundle sem eu precisar ficar dando yarn webpack no terminal
     static: {
       directory: path.resolve(__dirname, 'public') // basta executar yarn webpack serve
   },

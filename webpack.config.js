@@ -37,7 +37,15 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: "babel-loader"
+      },
+      {
+        //quero verificas se a extesao é css
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ["style-loader", "css-loader" ]
       }
+
+
     ]
   }
 };

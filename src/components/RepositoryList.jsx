@@ -1,26 +1,22 @@
+import { RepositoryItem } from "./RepositoryItem";
 
-const teste = "teste"
+const repositorio = {
+  name: "nome teste",
+  desc: "descricao curta",
+  url: "gomake.com.br"
+};
 
-
-export function RepositoryList(){
-
-return(
-
+export function RepositoryList() {
+  return (
     <section className="repository-list">
+      <h1>Lista de repositorios</h1>
 
-        <h1>Lista de repositorios</h1>
-
-        <ul>
-
-            <li> 
-                
-                <strong>Nome: {teste}</strong>
-                <p> descrição </p>
-                <a href="test"> acessar repositorio</a>
-
-            </li>
-        </ul>
+      <ul>
+        <RepositoryItem primeiraPropriedade={repositorio} />
+        <RepositoryItem primeiraPropriedade={repositorio} />
+        <RepositoryItem primeiraPropriedade={repositorio} />
+        <RepositoryItem primeiraPropriedade={repositorio} />
+      </ul>
     </section>
-);
-
+  );
 }

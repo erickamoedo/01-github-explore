@@ -6,7 +6,7 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const isDevelopment = process.env.NODE_ENV != "production";
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.jsx"), // modulo que carrega a primeira tela, ele chama o patch, o diretorio e o arquivo para executar
+  entry: path.resolve(__dirname, "src", "index.tsx"), // modulo que carrega a primeira tela, ele chama o patch, o diretorio e o arquivo para executar
   devtool: isDevelopment ? "eval-source-map" : "source-map", // faz roadmap de erros mostrar a linha exata no chrome
   mode: isDevelopment ? "development" : "production", // verifica qual ambiente esta e  ai ele otimiza qnd eu usar  o yarn weback no ambiente de dev (diminuiu 6 segundos)
   output: {
@@ -15,7 +15,7 @@ module.exports = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
   devServer: {
     // aqui eu passo o path da minha aplicacao e ele atualiza o bundle sem eu precisar ficar dando yarn webpack no terminal
@@ -34,7 +34,7 @@ module.exports = {
     rules: [
       {
         //quero verificas se a extesao é jsx
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",

@@ -15,8 +15,8 @@ export function RepositoryList() {
   const [repositories, setRepositories] = useState([]); // lista começa sempre um array vazio
 
   useEffect(() => {
-    //fetch("https://api.github.com/orgs/rocketseat/repos")
-    fetch("https://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+    fetch("https://api.github.com/orgs/rocketseat/repos")
+      //fetch("https://www.songsterr.com/a/ra/songs.json?pattern=Marley")
       .then((response) => response.json()) // convertendo a resposta em json
       .then((data) => setRepositories(data));
   }, []);

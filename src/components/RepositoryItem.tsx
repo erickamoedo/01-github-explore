@@ -1,4 +1,13 @@
-export function RepositoryItem(props) {
+interface RepositoryItemProps {
+  // vou tipar minha propriedade, explicando para o typescript o que tem dentro da propriedade props
+  repository: {
+    name: string;
+    description: string;
+    html_url: string;
+  };
+}
+
+export function RepositoryItem(props: RepositoryItemProps) {
   return (
     /*  API do songsterr 
     <li>

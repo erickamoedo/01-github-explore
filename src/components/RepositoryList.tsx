@@ -11,8 +11,13 @@ import "../styles/repositories.scss";
 //    url: "gomake.com.br"
 //  };
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
 export function RepositoryList() {
-  const [repositories, setRepositories] = useState([]); // lista começa sempre um array vazio
+  const [repositories, setRepositories] = useState<Repository[]>([]); // lista começa sempre um array vazio
 
   useEffect(() => {
     fetch("https://api.github.com/orgs/rocketseat/repos")
